@@ -1,16 +1,5 @@
 import mongoose from "mongoose";
 
-const videoSubtitle = new mongoose.Schema({
-  language: {
-    type: String,
-    // required: true,
-  },
-  url: {
-    type: String,
-    // required: true,
-  },
-});
-
 const videoSchema = new mongoose.Schema({
   lessonId: {
     type: String,
@@ -31,7 +20,7 @@ const videoSchema = new mongoose.Schema({
     requried: true,
   },
 
-  subtitles: [videoSubtitle],
+  subtitles: { type: String },
   createdAt: { type: Date, default: Date.now },
 });
 

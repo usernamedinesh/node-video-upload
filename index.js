@@ -32,7 +32,14 @@ app.get("/", function (req, res) {
   res.send("server is working ");
 });
 
-app.post("/upload", upload.single("file"), UploadVideo);
+app.post(
+  "/upload",
+  upload.fields([
+    { name: "video", maxCount: 1 },
+    { name: "subtitle", maxCount: 1 },
+  ]),
+  UploadVideo,
+);
 app.get("/get", fetchVideo);
 
 app.use((req, res) => {
